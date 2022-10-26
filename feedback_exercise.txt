@@ -1,0 +1,21 @@
+Project Peer Feedback
+
+Feedback Providers: Audrey Miller, Marni Epstein, Michael Eyer
+
+Feedback Receiver: Ethan Stanley
+
+Feedback:
+- Limiting how deep the analysis can go to avoid problems with sparse data
+- How to fix moves that are too uncommon (e.g. group them into one block of “rare” moves)
+- It is interesting to intermediate chess players (target audience)
+- Good data and scope
+- Chess board should at least display the current position if not interactive (move this from “nice to have” to “essential” feature)
+- The circle thing is cool
+- Scales well, is not size dependent (more data is better)
+- Plan is detailed
+- Interesting: never seen filtering based off of rating
+- Color is not super necessary
+- Use color to differentiate moves (color is effective for categorical data)
+- Extra feature: incorporate a chess engine
+- The expanding pie chart is meaningful
+- Chess board and pie are synchronized (they think this is effective)
