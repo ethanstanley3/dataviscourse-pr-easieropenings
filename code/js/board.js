@@ -1,4 +1,5 @@
 let that = null;
+let dropping = false;
 
 // the interactive chess board
 class Board {
@@ -36,20 +37,23 @@ class Board {
         }
     }
 
-    onDrop(source, target) {
-        let played = that.playMoveIfGood(source + target);
-        if (!played) {
-            return "snapback";
-        }
+    getTurn(){
+        return this.game.turn();
     }
 
-    playMoveIfGood(move) {
+    onDrop(source, target) {
+        dropping = true;
+        makeMove(source + target);
+    }
+
+    moveSucceeded(move) {
         let source = move.substring(0, 2);
         let target = move.substring(2, 4);
 
         let played = that.pie.playedMove(move);
 
         if (!played) {
+            dropping = false;
             return false;
         }
 
@@ -60,12 +64,18 @@ class Board {
         });
 
         if (legalMove === null) {
+            dropping = false;
             return false;
         }
 
-        that.pie.update(move);
+        // that.pie.update(move);
         that.updateStatus();
-        that.board.position(that.game.fen());
+        if (!dropping) {
+            that.board.position(that.game.fen());
+        }
+
+        dropping = false;
+        return true;
     }
 
     // update the board position after the piece snap

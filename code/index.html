@@ -31,16 +31,28 @@
     </head>
 
     <body>
+
+        <div class="tooltip" style="display: none">
+            <div class="move"></div>
+            <div class="usageRate"></div>
+            <div class="winRate"></div>
+        </div>
+
         <div class="wrapper">
             <nav>
-                Easier Openings
-                ~~~
-                Ethan Stanley
+                <div class="title">Easier Openings</div>
+                <div class="author">Ethan Stanley</div>
+                <div class="turn">White to move!</div>
             </nav>
             <div class="pie">
                 <svg id="pie_svg"></svg>
-                <div id="move"></div>
-                <div id="children"></div>
+                <div id="noDataAlert" style="display: none;">End of game tree reached!</div>
+            </div>
+            <div class="table">
+                <table id="table">
+                    <thead id="header"></thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
             </div>
             <div class="board">
                 <div id="myBoard" style="width: 400px"></div>
@@ -54,9 +66,12 @@
             <footer>Footer</footer>
         </div>
 
+        
+
 
         <script src="js/pie.js"></script>
         <script src="js/board.js"></script>
+        <script src="js/table.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>
