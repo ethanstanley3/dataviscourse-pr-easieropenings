@@ -44,7 +44,8 @@ function updateHeader(){
     }
 }
 
-fetch("./data/processed/processed_data_100k_pruned.json")
+function loadDataset(path){
+    fetch("./data/processed/" + path)
     .then((response) => response.json())
     .then(function (tree) {
         table = new Table();
@@ -52,3 +53,11 @@ fetch("./data/processed/processed_data_100k_pruned.json")
         board = new Board(pie);
         pie.link(board); // give the pie chart access to the board
     });
+}
+
+loadDataset("processed_data_100k.json");
+
+let button = document.querySelector("#reloadButton");
+button.addEventListener('click', function(){
+    loadDataset(document.querySelector("#datasets").value)
+});

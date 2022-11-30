@@ -4,13 +4,21 @@
 import json
 import chess.pgn
 import io
+import sys
 
-# how many games to load
-stop = 100000
+# total arguments
+n = len(sys.argv)
+
+filename = sys.argv[1]
+min = float(sys.argv[2])
+max = float(sys.argv[3])
+stop = float(sys.argv[4])
+
 
 # where to load from
 # this will only work on my machine because source data file is too large to upload to github (250+ GB)
-filepath = r"C:\Users\ethan\OneDrive\Desktop\Fall 22\CS 5630\project\code\data\lichess_db_standard_rated_2022-09.pgn\lichess_db_standard_rated_2022-09.pgn"
+# filepath = r"C:\Users\ethan\OneDrive\Desktop\Fall 22\CS 5630\project\code\data\lichess_db_standard_rated_2022-09.pgn\lichess_db_standard_rated_2022-09.pgn"
+filepath = r"./data/raw/lichess_db_standard_rated_2022-09.pgn"
 
 # the root node of the tree to be generated out of source data
 root = {
@@ -36,10 +44,16 @@ def next(turn):
 
 
 def process_chunk(chunk):
-    node = root
     pgn = io.StringIO(chunk)
     game = chess.pgn.read_game(pgn)
+
+
+    level = (float(game.headers["BlackElo"]) + float(game.headers["WhiteElo"]))/2
+    if level < min or level > max:
+        return False
+
     result = game.headers["Result"]
+    node = root
 
     node["n"] += 1
     if won(result, node["turn"]):
@@ -61,6 +75,7 @@ def process_chunk(chunk):
                 "children": {}
             }
             node = node["children"][move]
+    return True
 
 
 # DFS to prune all branches that have only been played one time
@@ -78,17 +93,18 @@ def trim(node, newRoot):
 
 
 # read and process individual games from the file, then write the results to another file
-with open(filepath, "r") as r, open("data/processed_data.json", "w") as w:
+with open(filepath, "r") as r, open("./data/processed/" + filename, "w") as w:
     chunk = ""
     count = 0
     for line in r:
         chunk += line
         if "1. " in line:
-            process_chunk(chunk)
+            processed = process_chunk(chunk)
             chunk = ""
             if count > stop:
                 break
-            count += 1
+            if processed:
+                count += 1
     newRoot = {
         "move" : None,
         "n" : root["n"],

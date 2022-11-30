@@ -15,7 +15,8 @@ class Table {
         let headerCells = headerRow
             .selectAll("th")
             .data(this.headerData)
-            .join("th");
+            .join("th")
+            .html("");
         let headerSvgs = headerCells
             .append("svg")
             .attr("width", this.cellSvgWidths)

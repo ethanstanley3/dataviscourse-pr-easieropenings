@@ -8,6 +8,9 @@ class Pie {
         this.node = tree;
         this.table = table;
 
+        d3.select("#pie_svg").style("display", "inline");
+        d3.select("#noDataAlert").style("display", "none");
+
         // draw the pie chart for the starting board
         this.updatePie();
     }
@@ -39,15 +42,7 @@ class Pie {
     update(move) {
         if (move in this.node.children) {
             this.node = this.node.children[move];
-            // console.log(Object.keys(this.node.children));
-            // for (let key in this.node.children) {
-            //     console.log(key, this.node.children[key].n);
-            // }
-            // $("#children").html(Object.keys(this.node.children));
             this.updatePie();
-        }
-        else{
-            console.log("this should not have happened");
         }
     }
 
@@ -72,7 +67,7 @@ class Pie {
 
         let data = Object.values(this.node.children);
 
-        total = 0;
+        let total = 0;
         data.forEach(function(item){
             total += item.n;
         });
