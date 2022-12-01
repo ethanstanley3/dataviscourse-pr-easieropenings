@@ -11,13 +11,12 @@ class Pie {
         d3.select("#pie_svg").style("display", "inline");
         d3.select("#noDataAlert").style("display", "none");
 
-        let width = document.querySelector('.pie').offsetWidth*0.95;
+        let width = document.querySelector('.pie').offsetWidth*0.92;
         let height = width;
         this.radius = width/2 - 20;
         d3.select("#pie_svg")
             .attr("width", width)
             .attr("height", height)
-            .attr("margin", "auto")
             .style("background-color", "white")
             .select("g")
             .attr(
@@ -112,7 +111,7 @@ class Pie {
         // We also need to give it an inner radius...
         arc.innerRadius(0);
 
-        let groups = svg.selectAll("g").data(pieData).enter().append("g");
+        let groups = svg.selectAll("g").data(pieData).enter().append("g").attr("cursor", "pointer");
 
         this.groups = groups;
 

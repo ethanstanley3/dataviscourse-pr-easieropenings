@@ -11,7 +11,7 @@ class Table {
             { text: "Frequency", sorted: false, ascending: false },
             { text: "Win Percentage", sorted: false, ascending: false },
         ];
-        let headerRow = d3.select("#header");
+        let headerRow = d3.select("#header").style("cursor", "pointer");
         let headerCells = headerRow
             .selectAll("th")
             .data(this.headerData)
@@ -185,7 +185,7 @@ class Table {
         }
 
         let tableBody = d3.select("#tableBody");
-        let rows = tableBody.selectAll("tr").data(data).join("tr");
+        let rows = tableBody.selectAll("tr").data(data).join("tr").style("cursor", "pointer");
         this.rows = rows;
 
         let cells = rows

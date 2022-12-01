@@ -14,16 +14,6 @@ body {
     font-size: x-large;
 }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    /* the first and last row have fixed heights, the middle one is
-    driven by the height of the content */
-    grid-auto-rows: 100px auto 100px;
-    /* grid-auto-rows: 1fr 6fr 1fr; */
-    gap: 10px;
-}
-
 .tooltip {
     position: absolute;
     background-color: white;
@@ -36,6 +26,33 @@ body {
     font-weight: bold;
     text-align: center;
 }
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* the first and last row have fixed heights, the middle one is
+    driven by the height of the content */
+    grid-auto-rows: 100px auto 100px;
+    /* grid-auto-rows: 1fr 6fr 1fr; */
+    gap: 8px;
+}
+
+.controls{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    width: 30%;
+}
+
+.dataControl {
+    background-color: aliceblue;
+    width: 49%;
+    text-align: center;
+    height: 30px;
+    border: black solid 2px;
+    color: black;
+}
+
 
 #noDataAlert {
     position: relative;
@@ -53,13 +70,19 @@ body {
     color: white;
 }
 
-.dataControl {
-    background-color: aliceblue;
-    width: 10%;
+.pieTitle{
+    font-size: larger;
     text-align: center;
-    height: 30px;
-    border: black solid 2px;
-    color: black;
+    text-decoration: underline;
+}
+
+/* show that the pieces are draggable */
+img {
+    cursor: grab;
+}
+
+button {
+    cursor: pointer;
 }
 
 .dataControl:hover {
@@ -71,7 +94,9 @@ body {
 #myBoard{
     position: relative;
     left: 50%;
-    transform: translate(-50%, 0%);
+    top: 0%;
+    width: 90%;
+    transform: translate(-50%, 10px);
 }
 
 nav {
@@ -89,6 +114,22 @@ nav {
     border: 3px black solid;
     height: 500px;
     overflow-y: auto;
+}
+
+#pie_svg {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#table{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 10px);
+}
+
+.piechart{
+    transform: translate(0, 10px);
 }
 
 .table {

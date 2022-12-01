@@ -5,10 +5,10 @@
         <title>Easier Openings</title>
         <script src="https://d3js.org/d3.v7.js"></script>
         <link
-        rel="stylesheet"
-        href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
-        integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
-        crossorigin="anonymous"
+            rel="stylesheet"
+            href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+            integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
+            crossorigin="anonymous"
         />
         <link rel="stylesheet" href="styles.css" />
         <script
@@ -31,11 +31,7 @@
     </head>
 
     <body>
-        <div class="tooltip" style="display: none">
-            <div class="move"></div>
-            <div class="usageRate"></div>
-            <div class="winRate"></div>
-        </div>
+        
 
         <div class="wrapper">
             <nav>
@@ -44,7 +40,12 @@
                 <div class="turn">White to move!</div>
             </nav>
             <div class="pie">
-                <svg id="pie_svg"><g></g></svg>
+                <div class="piechart">
+                    <div class="pieTitle">
+                        How often each move is played from the current position
+                    </div>
+                    <svg id="pie_svg"><g></g></svg>
+                </div>
                 <div id="noDataAlert" style="display: none">
                     End of game tree reached!
                 </div>
@@ -56,24 +57,32 @@
                 </table>
             </div>
             <div class="board">
-                <div id="myBoard" style="width: 400px"></div>
-                <label>Status:</label>
-                <div id="status"></div>
-                <label>FEN:</label>
+                <div id="myBoard"></div>
+                <!-- <label>Status:</label>
+                <div id="status"></div> -->
+                <!-- <label>FEN:</label>
                 <div id="fen"></div>
                 <label>PGN:</label>
-                <div id="pgn"></div>
+                <div id="pgn"></div> -->
             </div>
             <footer>
-                <select name="datasets" id="datasets" class="dataControl">
-                    <option value="500k-nofilter.json">All skill levels</option>
-                    <option value="50k-0-999.json">0 - 999 ELO</option>
-                    <option value="50k-1000-1999.json">1000 - 1999 ELO</option>
-                    <option value="50k-2000plus.json">2000+ ELO</option>
-                </select>
+                <div class="controls">
+                    <select name="datasets" id="datasets" class="dataControl">
+                        <option value="500k-nofilter.json">All skill levels</option>
+                        <option value="50k-0-999.json">0 - 999 ELO</option>
+                        <option value="50k-1000-1999.json">1000 - 1999 ELO</option>
+                        <option value="50k-2000plus.json">2000+ ELO</option>
+                    </select>
 
-                <button id="reloadButton" class="dataControl">Restart</button>
+                    <button id="reloadButton" class="dataControl">Restart</button>
+                </div>
             </footer>
+        </div>
+
+        <div class="tooltip" style="display: none">
+            <div class="move"></div>
+            <div class="usageRate"></div>
+            <div class="winRate"></div>
         </div>
 
         <script src="js/pie.js"></script>

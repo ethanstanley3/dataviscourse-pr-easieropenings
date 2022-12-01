@@ -9,8 +9,8 @@ class Board {
         this.board = null;
         this.game = new Chess();
         this.$status = $("#status");
-        this.$fen = $("#fen");
-        this.$pgn = $("#pgn");
+        // this.$fen = $("#fen");
+        // this.$pgn = $("#pgn");
 
         let config = {
             draggable: true,
@@ -119,8 +119,8 @@ class Board {
         }
 
         that.$status.html(status);
-        that.$fen.html(that.game.fen());
-        that.$pgn.html(that.game.pgn());
+        // that.$fen.html(that.game.fen());
+        // that.$pgn.html(that.game.pgn());
     }
 
     move(theMove) {
