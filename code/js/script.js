@@ -33,6 +33,8 @@ function updateHeader(){
             .style("border-color", "white")
             .select(".turn")
             .html("Black to move!");
+        d3.selectAll("a")
+            .style("color", "white");
     }
     else if(turn === 'w'){
         d3.select("nav")
@@ -41,6 +43,8 @@ function updateHeader(){
             .style("border-color", "black")
             .select(".turn")
             .html("White to move!");
+        d3.selectAll("a")
+            .style("color", "black");
     }
 }
 
@@ -52,6 +56,7 @@ function loadDataset(path){
         pie = new Pie(tree, table);
         board = new Board(pie);
         pie.link(board); // give the pie chart access to the board
+        updateHeader();
     });
 }
 

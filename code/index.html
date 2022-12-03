@@ -35,10 +35,27 @@
 
         <div class="wrapper">
             <nav>
+                <div class="controls">
+                    <select name="datasets" id="datasets" class="dataControl">
+                        <option value="500k-nofilter.json">All skill levels</option>
+                        <option value="50k-0-999.json">0 - 999 ELO</option>
+                        <option value="50k-1000-1999.json">1000 - 1999 ELO</option>
+                        <option value="50k-2000plus.json">2000+ ELO</option>
+                    </select>
+
+                    <button id="reloadButton" class="dataControl">Restart</button>
+                </div>
                 
-                <div class="title">Easier Openings</div>
-                <div class="author">Ethan Stanley</div>
-                <div class="turn">White to move!</div>
+                <div class="titleDiv">
+                    <div class="title">Easier Openings</div>
+                    <div class="turn">White to move!</div>
+                </div>
+
+                <div class="links">
+                    <a href="https://ethanstanley3.github.io">About this project</a><br>
+                    <a href="https://ethanstanley3.github.io">Process book</a><br>
+                    <a href="https://ethanstanley3.github.io">Screen-cast</a>
+                </div>
             </nav>
             <div class="pie">
                 <div class="piechart">
@@ -59,24 +76,15 @@
             </div>
             <div class="board">
                 <div id="myBoard"></div>
-                <!-- <label>Status:</label>
-                <div id="status"></div> -->
-                <!-- <label>FEN:</label>
-                <div id="fen"></div>
-                <label>PGN:</label>
-                <div id="pgn"></div> -->
             </div>
             <footer>
-                <div class="controls">
-                    <select name="datasets" id="datasets" class="dataControl">
-                        <option value="500k-nofilter.json">All skill levels</option>
-                        <option value="50k-0-999.json">0 - 999 ELO</option>
-                        <option value="50k-1000-1999.json">1000 - 1999 ELO</option>
-                        <option value="50k-2000plus.json">2000+ ELO</option>
-                    </select>
-
-                    <button id="reloadButton" class="dataControl">Restart</button>
-                </div>
+                <b>How to use this visualization:</b><br>
+                Hover over any element of the visualization to see the move highlighted on the other two components of the visualization.<br>
+                Make a move on the board, click a row of the table, or click a wedge of the pie chart to change the board state being visualized.<br>
+                Click a header of the table to sort the rows by that attribute.<br>
+                Use the dropdown in the top left to filter the games being visualized by the rating of the players.<br>
+                To return to the starting board state, click the "Restart" button.<br>
+                Drag a piece to a new location without releasing it to see which row of the table/wedge of the pie chart correspond to that move.
             </footer>
         </div>
 

@@ -82,6 +82,7 @@ class Pie {
             // d3.select("#pie_svg").style("background-color", "red");
             d3.select("#pie_svg").style("display", "none");
             d3.select("#noDataAlert").style("display", "inline");
+            d3.select(".tooltip").style("display", "none");
             return;
         }
 
@@ -109,7 +110,7 @@ class Pie {
         // Let's tell it how large we want it
         arc.outerRadius(this.radius);
         // We also need to give it an inner radius...
-        arc.innerRadius(0);
+        arc.innerRadius(30);
 
         let groups = svg.selectAll("g").data(pieData).enter().append("g").attr("cursor", "pointer");
 
