@@ -35,16 +35,13 @@ class Pie {
 
     playedMove(move){
         if(move in this.node.children){
-            console.log(move + " is legal");
             return true;
         }
         return false;
     }
 
     highlight(move){
-        // console.log(this.groups);
         let slice = this.groups.filter(d => d.data.move === move);
-        // console.log(slice.selectAll("*"));
         slice.selectAll("path").style("stroke-width", "4px");
     }
 
@@ -135,8 +132,6 @@ class Pie {
             .style("font-weight", "bold");
         
         groups.on("click", function(event, d){
-            console.log(event);
-            console.log(d);
             makeMove(d.data.move);
         })
 

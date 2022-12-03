@@ -135,7 +135,6 @@ class Table {
     }
 
     redrawTable(data) {
-        console.log(data);
 
         total = 0;
 
@@ -143,7 +142,6 @@ class Table {
             total += move.n;
         });
 
-        console.log(total);
 
         this.data = data;
         if (this.headerData[0].sorted) {

@@ -119,12 +119,9 @@ class Board {
         }
 
         that.$status.html(status);
-        // that.$fen.html(that.game.fen());
-        // that.$pgn.html(that.game.pgn());
     }
 
     move(theMove) {
-        console.log("board received" + theMove.substring(2, 4));
 
         let aMove = that.game.move({
             from: theMove.substring(0, 2),
