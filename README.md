@@ -1,6 +1,6 @@
-Project website: https://ethanstanley3.github.io/easieropenings
+Project website: https://ethanstanley3.github.io/easieropenings.html
 
-Screencast video: www.youtub...
+Screencast video: https://youtu.be/v1V_ZBcDr_0
 
 Contents of this repository:
 
